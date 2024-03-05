@@ -1,4 +1,4 @@
-Synapse Computing Server
+Synapse Server Usage
 ================
 
 .. _setup:
