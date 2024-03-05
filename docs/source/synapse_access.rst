@@ -40,7 +40,7 @@ Mac OS
    
    * The above fix has been implemented in an XQuartz installer available in the KUMC Self Service application installer. Open the Self Service app in your Applications folder and login. Under the productivity category you should see the XQuartz application available to install. Installing it will remove any existing XQuartz application, install the latest version i.e. 2.8.5, and then add the two settings that fixed the issue.
 
-   .. image:: media/xquartz.png
+   .. image:: media/xquartz2.png
      :width: 800
      :alt: A screenshot of the KUMC Self Service application installer. A red box is drawn around the "Productivity" item in the category list on the left hand pane. In the productivity category, a red box is drawn around the entry for XQuartz, which includes the button Reinstall.
 
