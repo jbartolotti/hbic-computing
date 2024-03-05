@@ -19,7 +19,7 @@ Windows
 #. Install `MobaXterm <https://mobaxterm.mobatek.net/download-home-edition.html>`_ or your preferred SSH client. If you do not have software installation rights on your PC, you may use the Portable edition which contains a stand-alone .exe file that does not need to be installed. Otherwise, select the Installer edition.
 #. Open MobaXterm and configure a new session. Select SSH, ensure X11-Forwarding is checked, and enter the following information:
     * Remote Host: hbic-synapse2.kumc.edu
-    * Username: <your KUMC username> **Note: admins need to login with their sa-USERNAME account**
+    * Username: <your KUMC username> Note: admins need to login with their sa-USERNAME account
 
 .. image:: media/xnat_account_1.png
   :width: 800
