@@ -1,7 +1,7 @@
 XNAT Data Management
 ==============================
 
-.. _setup:
+.. _xnat_account:
 
 Creating an XNAT account
 -----------------------------
