@@ -1,10 +1,10 @@
 XNAT Data Management
-================
+==============================
 
 .. _setup:
 
 Creating an XNAT account
---------------
+-----------------------------
 
 While on the KUMC/KU-L network or VPN, go to https://xnat.kumc.edu and login with your KUMC credentials (do not use the register button)
 
