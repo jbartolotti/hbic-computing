@@ -49,7 +49,26 @@ Each level can be queried from Rxnat. The functions ``hbic$projects()``, ``hbic$
      :width: 800
 
 
-To obtain the resource files associated with a particular scan, you will need to provide either the URI (Universal Resource Identifier) for each file, or the XNAT ID associated with a single Experiment. The XNAT ID is labeled "Accession #" on the Experiment details page for the scan.
+To obtain the resource files associated with a particular scan, you will need to provide either the URI (Universal Resource Identifier) for each file, or the ID/Accession# associated with a single Experiment.
 
+Use ``download_xnat_dir()`` to obtain all files associated with an experiment (i.e., scanning session). Data is downloaded as a single .zip file by default. Set `zipped = FALSE` to download as individual files.
 
+.. code-block:: console
 
+   # Location to save downloaded files to
+   output_directory <- '~/P-Drive/mystudy/Raw'
+   myproject <- '9999'
+   # Table of all experiments (scans) in XNAT you have access to.
+   exp <- hbic$experiments() 
+   # Filter by a project of interest
+   exp_myproject <- subset(exp, project == myproject)
+   # Download the entire scan session for the first entry in the experiment list to the specified directory. Timeout is set to 600 seconds; download will abort if it does not complete within this time.
+   my_id <- exp_myproject$ID[1] 
+   download_xnat_dir(hbic, my_id, file_dir = output_directory, timeout_duration = 600)
+
+Use ``download_xnat_file()`` to obtain a single file. Each dicom image is a single file, and as such it would take many function calls to complete a dataset this way. This function is most useful for downloading a combined .nii file or other complete resource. You need to provide a URI for the resource to this function.
+
+.. code-block:: console
+
+   my_resources <- hbic$get_xnat_experiment_resources(my_id)
+   download_xnat_file(hbic, my_resources$URI[1], file_dir = output_directory)
