@@ -45,7 +45,7 @@ There are four levels of data structure that you can access with Rxnat:
 
 Each level can be queried from Rxnat. The functions ``hbic$projects()``, ``hbic$subjects()``, and ``hbic$experiments()`` (replace hbic with the name of the variable you saved the output of xnat_connect() to). Return tables with information on all projects, subjects, or experiments in XNAT that you have access to. ``hbic$get_xnat_experiment_resources(EXPERIMENT_ID)`` returns a table with all resource files associated with the given experiment. ``EXPERIMENT_ID`` refers to an ID from the ``hbic$experiments()`` table, and is also called the "Accession #" in the XNAT web interface.
 
-.. image:: media/xnat_rxnat.png
+.. image:: media/xnat_rxnat.PNG
      :width: 800
 
 
