@@ -62,9 +62,9 @@ Mac OS
 X2Go
 ------------------------------
 
-`X2Go<https://wiki.x2go.org/doku.php/doc:newtox2go>`_ is Remote Desktop software that connects to the Synapse server with a graphical interface suitable for low-bandwidth connections or over a VPN. **If application windows on Synapse are slow or unresponsive, use X2Go to connect**
+`X2Go <https://wiki.x2go.org/doku.php/doc:newtox2go>`_ is Remote Desktop software that connects to the Synapse server with a graphical interface suitable for low-bandwidth connections or over a VPN. **If application windows on Synapse are slow or unresponsive, use X2Go to connect**
 
-#. Install X2Go by obtaining the `X2GoClient application<https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`_ for Windows or Mac. 
+#. Install X2Go by obtaining the `X2GoClient application <https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`_ for Windows or Mac. 
 
    **IMPORTANT:** The Windows X2Go Client requires administrator rights to install. If you do not have admin rights, you can obtain a portable version (non-installing .exe) from the R-Drive Resources folder, R:/Resources/HBIC-Computing/X2Go/X2GoClient.zip. Copy and unzip the file to your computer and run the x2goclient.exe file.
 
