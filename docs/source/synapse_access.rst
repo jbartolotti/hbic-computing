@@ -46,15 +46,57 @@ Mac OS
 
 #. Open the Terminal application, and at the command prompt, enter the following command and press return. Enter your password when prompted. The ssh command with the -Y option specified will allow X-Windows forwarding during your SSH session.
 
-   .. code_block:: console
+   .. code-block:: console
+
      ssh -Y <username>@hbic-synapse2.kumc.edu
 
-   .. image:: media/macos_2.jpg
-     :width: 800
-     :alt: A screenshot of the Terminal application on Mac that successfully connected to Synapse using the command, ssh -X username@hbic-synapse2.kumc.edu
+
 
 #. The first time that you login to synapse, confirm that X-Windows forwarding is working. Enter xeyes on the terminal and press return. You should get a window with a pair of eyes open on your screen.
 
    .. image:: media/xeyes.jpg
      :width: 200
      :alt: The xeyes window, showing eyes that follow the user's cursor around the screen.
+
+
+X2Go
+------------------------------
+
+`X2Go<https://wiki.x2go.org/doku.php/doc:newtox2go>`_ is Remote Desktop software that connects to the Synapse server with a graphical interface suitable for low-bandwidth connections or over a VPN. **If application windows on Synapse are slow or unresponsive, use X2Go to connect**
+
+#. Install X2Go by obtaining the `X2GoClient application<https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`_ for Windows or Mac. 
+
+   **IMPORTANT:** The Windows X2Go Client requires administrator rights to install. If you do not have admin rights, you can obtain a portable version (non-installing .exe) from the R-Drive Resources folder, R:/Resources/HBIC-Computing/X2Go/X2GoClient.zip. Copy and unzip the file to your computer and run the x2goclient.exe file.
+
+#. Open X2Go and under the Session tab, click New Session (Ctrl-N) and configure as follows: 
+
+   **Session tab**
+
+   * Host: hbic-synapse2.kumc.edu
+
+   * Login: <your KUMC username, e.g. j186b025>
+
+   * SSH port: 22
+
+   * Session Type: Custom desktop
+
+   * Command: startlxqt
+
+   **Connection tab**
+
+   * Connection speed: LAN
+
+   **Input/Output tab**
+
+   * Display: Select Fullscreen or define a Custom window size that is smaller than your current display.
+
+   *Note: To open a terminal instead of a graphical desktop, change Session Type to Single application, Terminal*
+
+#. After creating the session, select it from the dock on the right and login with your KUMC username and password. This will open a desktop with a menu bar at the bottom. Click the Red Hat icon and select from the available applications. 
+   * Applications: Select from Science, Education, or Other. If the application you need is not present, start it from the Terminal application directly.
+   
+   * Terminal: Under System Tools, select Xfce Terminal, XTerm, or QTerminal. You can use these terminals the same as you would connecting to Synapse directly using MobaXTerm or Terminal, but graphical applications will be faster and more responsive.
+
+   * File Browser: Open your home folder (your username) from the desktop. If it is not present, right-click the desktop, select Desktop Preferences, and under the Advanced tab, click the checkbox next to Home and press OK. If the R or P drives are not visible, first mount them using the terminal. Click the Red Hat icon on the bottom menu, and select Xfce Terminal under System Tools. Run the command *sudo KUMC-Map R* (or P, or KUL, etc.).
+
+   * XNAT: Select Firefox from Internet, and navigate to https://xnat.kumc.edu
