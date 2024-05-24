@@ -13,21 +13,23 @@ Submit an `access request <https://redcap.kumc.edu/surveys/?s=R7PCHA3PNL>`_ for 
 Accessing Synapse
 ------------------------
 
+**ATTENTION:** hbic-synapse**2** has been deprecated. Please direct your connections to **hbic-synapse.kumc.edu** (no number). Direct questions to jbartolotti2 at kumc dot edu.
+
 Windows
 ----------------------
 
 #. Install `MobaXterm <https://mobaxterm.mobatek.net/download-home-edition.html>`_ or your preferred SSH client. If you do not have software installation rights on your PC, you may use the Portable edition which contains a stand-alone .exe file that does not need to be installed. Otherwise, select the Installer edition.
 #. Open MobaXterm and configure a new session. Select SSH, ensure X11-Forwarding is checked, and enter the following information:
    
-   * Remote Host: hbic-synapse2.kumc.edu
+   * Remote Host: hbic-synapse.kumc.edu
    
    * Username: <your KUMC username> *Note: admins need to login with their sa-USERNAME account*
 
    .. image:: media/mobaxterm_1.png
      :width: 800
-     :alt: A screenshot of MobaXterm. A red circle is drawn around the "Session" button on the top row of the application. A pop-up window titled "Session settings" is opened, and there is a red circle drawn around the "SSH" tab. In the section Basic SSH settings, the field Remote host is circled and contains the text "hbic-synapse2.kumc.edu". A red circle is drawn around the specify username field. The filed is checked and contains an example username, a123b456. In the panel below, the "Advanced SSH settings" tab is selected. A red circle is drawn around the option X-11 forwarding, and this option is checked.
+     :alt: A screenshot of MobaXterm. A red circle is drawn around the "Session" button on the top row of the application. A pop-up window titled "Session settings" is opened, and there is a red circle drawn around the "SSH" tab. In the section Basic SSH settings, the field Remote host is circled and contains the text "hbic-synapse.kumc.edu". A red circle is drawn around the specify username field. The filed is checked and contains an example username, a123b456. In the panel below, the "Advanced SSH settings" tab is selected. A red circle is drawn around the option X-11 forwarding, and this option is checked.
 
-#. Connect to Synapse by clicking the Sessions tab on the Left, and then selecting the hbic-synapse2.kumc.edu session that you just configured. Enter your KUMC credentials when prompted.
+#. Connect to Synapse by clicking the Sessions tab on the Left, and then selecting the hbic-synapse.kumc.edu session that you just configured. Enter your KUMC credentials when prompted.
 
 Mac OS
 -------------------------
@@ -48,7 +50,7 @@ Mac OS
 
    .. code-block:: console
 
-     ssh -Y <username>@hbic-synapse2.kumc.edu
+     ssh -Y <username>@hbic-synapse.kumc.edu
 
 
 
@@ -72,7 +74,7 @@ X2Go
 
    **Session tab**
 
-   * Host: hbic-synapse2.kumc.edu
+   * Host: hbic-synapse.kumc.edu
 
    * Login: <your KUMC username, e.g. j186b025>
 
@@ -80,7 +82,7 @@ X2Go
 
    * Session Type: Custom desktop
 
-   * Command: startlxqt
+   * Command: startxfce4
 
    **Connection tab**
 
