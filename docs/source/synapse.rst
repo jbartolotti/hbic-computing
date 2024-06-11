@@ -112,3 +112,5 @@ Utilities
 
 * Firefox
 
+* okular (pdf viewer)
+
