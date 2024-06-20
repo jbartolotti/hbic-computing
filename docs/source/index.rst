@@ -11,3 +11,4 @@ Contents
    synapse_access
    xnat
    xnat_api
+   cogneuro_workgroup
