@@ -34,6 +34,14 @@ myfirstpackage.Rproj: Open this in RStudio to load your entire project for worki
 NAMESPACE: In an R package, some functions are available to the user, and some are internal functions not exposed to the user. NAMESPACE is a list of exposed functions for the user. Do not edit this by hand. Instead, devtools will manage this file.
 R: This is where all your R code goes for your package.
 
+Creating a GitHub Repository
+----------------------
+
+First, make a GitHup repository of your package. If you are using GitHub Desktop, Select ``File > New``. Fill out the name and description, and choose the path to the folder that contains your package, i.e., ``C:/Users/j186b025/GitHub`` and click ``Create Repository`` Once It's created, Click ``Publish Repository`` to publish it to GitHub. For your own use, you can keep it a private repository, but if you intend to distribute it you will need to mark it as public (you can start with private and convert to public later in the settings). Do **NOT** put any sensitive or experimental data in your github project folder unless you know what you're doing with the .gitignore file, or it may get publicly published to GitHub. Store your data separately from your code.
+
+As you work on your code, commit changes to the repository frequently. It's a good idea to make commits at least every session you work on your code. Provide a brief summary, and a short description of the changes that you made. The Changes tab in GitHub Desktop shows you what your current edits are, which can help writing your description. These descriptions, in addition to the History that shows what changes were made to which files in a commit, help enormously with reviewing the state of your code, what you've done, and why -- especially if you are returning to a project weeks or months later. Commits are stored locally until you Publish your changes to GitHub, which will send your commit history to GitHub.com. 
+
+
 Package Framework
 ----------------------------
 
@@ -94,12 +102,27 @@ See https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-pac
 Including Data for Distribution in your Package
 -----------------------
 
-Sometimes it is helpful to include sample data sets in your package. Add them following the guide here:
+Sometimes it is helpful to include sample data sets in your package. Add them by following the guide here:
 See https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html
 
 Distribution with GitHub
 --------------------------
 
-First, make a GitHup repository of your package. If you are using GitHub Desktop, Select ``File > New``. Fill out the name and description, and choose the path to the folder that contains your package, i.e., ``C:/Users/j186b025/GitHub`` and click ``Create Repository`` Once It's created, Click ``Publish Repository`` to publish it to GitHub. For your own use, you can keep it a private repository, but if you intend to distribute it you will need to mark it as public (you can start with private and convert to public later in the settings). Do **NOT** put any sensitive or experimental data in your github project folder unless you know what you're doing with the .gitignore file, or it may get publicly published to GitHub. Store your data separately from your code.
+Before distributing, run ``devtools::document()`` to ensure that your NAMESPACE file and other configurations are up to date. Then make sure that you have published the most recent changes to GitHub and that your repository is public.
+
+Now, anyone can install your package with the following command:
+
+.. code-block:: console
+
+    devtools::install_github('your_github_username/myfirstpackage')
+
+After installation, they can then load your package as any other, with ``library(myfirstpackage)``.
+
+Updating your Package
+-------------------------
+
+When you make updates to your package, be sure to increment the Version number in your DESCRIPTION file. That way, a user can re-run ``devtools::install_github('username/package')`` and the new version will be correctly installed. If you don't increment the version number, then any users with the package already installed won't get your updates.
+
+
 
 
