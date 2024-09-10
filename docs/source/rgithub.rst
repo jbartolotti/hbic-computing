@@ -29,10 +29,13 @@ Create the framework for the R package using devtools:
 
 This creates a folder with the same name as your package with four files in it:
 
-DESCRIPTION: Package metadata, see `here <http://r-pkgs.had.co.nz/description.html>`_
-myfirstpackage.Rproj: Open this in RStudio to load your entire project for working on. 
-NAMESPACE: In an R package, some functions are available to the user, and some are internal functions not exposed to the user. NAMESPACE is a list of exposed functions for the user. Do not edit this by hand. Instead, devtools will manage this file.
-R: This is where all your R code goes for your package.
+* DESCRIPTION: Package metadata, see `here <http://r-pkgs.had.co.nz/description.html>`_
+
+* myfirstpackage.Rproj: Open this in RStudio to load your entire project for working on. 
+
+* NAMESPACE: In an R package, some functions are available to the user, and some are internal functions not exposed to the user. NAMESPACE is a list of exposed functions for the user. Do not edit this by hand. Instead, devtools will manage this file.
+
+* R: This is where all your R code goes for your package.
 
 Creating a GitHub Repository
 ----------------------
@@ -66,10 +69,17 @@ Within each ``.R`` file, I prefix internal function names with the filename to a
 .. code-block:: console
 
     LOAD.import_timecourse <- function(filename){
-      #code here
+      # code here
     }
 
-Don't prefix user-exposed functions in ``interface.R``, these should have the function names you want users to use while using your package. In addition, these functions need to have a `#' @export` tag so that ``devtools::document()`` and Roxygen can correctly mark them as exportable functions in NAMESPACE and generate help files.
+Don't prefix user-exposed functions in ``interface.R``, these should have the function names you want users to use while using your package. In addition, these functions need to have a ``#' @export`` tag so that ``devtools::document()`` and Roxygen can correctly mark them as exportable functions in NAMESPACE and generate help files.
+
+.. code-block:: console
+
+    #' @export
+    myfunction <- function(input){
+      # code here
+    }
 
 External Dependencies
 -------------------------
@@ -78,7 +88,7 @@ Naturally, your functions will require other functions from other packages. Do *
 
 .. code-block:: console
 
-    ggplot2::ggplot(data, ggplot::aes(x = time, y = value)) + ggplot::geom_line()
+    ggplot2::ggplot(data, ggplot2::aes(x = time, y = value)) + ggplot2::geom_line()
 
 And in your ``DESCRIPTION`` file, add the packages you need as dependencies in a comma-separated list. You may optionally add minimum version requirements.
 
