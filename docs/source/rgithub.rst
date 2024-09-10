@@ -6,7 +6,7 @@ R Packages and GitHub
 R Package Setup
 -----------------------------
 
-This guide is largely excerpted from https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html
+This guide is largely excerpted from https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html, and expands on GitHub integration and development in RStudio.
 
 Obtain `devtools <https://cran.r-project.org/web/packages/devtools/index.html>`_ for building packages and roxygen2 to aid in documentation.
 
