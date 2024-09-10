@@ -11,4 +11,5 @@ Contents
    synapse_access
    xnat
    xnat_api
+   rgithub
    cogneuro_workgroup
