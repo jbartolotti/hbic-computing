@@ -1,13 +1,24 @@
 Synapse Server Usage
 ================
 
+`Current server loads <http://hbic-synapse.kumc.edu:3838/usage.html>`_
+
 .. _general:
 
 General
 ------------------
-Synapse is a general use Linux server running RHEL8 that can be accessed on and off campus and is suitable for viewing and processing imaging data.
 
-The server is maintained by James Bartolotti jbartolotti2 at kumc dot edu. To report issues, request new software, get R-Drive or P-Drive access, or a new synapse account, fill out this `Redcap survey <https://redcap.kumc.edu/surveys/?s=R7PCHA3PNL>`_
+Synapse and the secondary servers, Alpha/Beta/Gamma/Delta, are general use Linux servers running RHEL8 that can be accessed on and off campus and are suitable for viewing and processing imaging data.
+
+The servers are maintained by James Bartolotti jbartolotti2 at kumc dot edu. To report issues, request new software, get R-Drive or P-Drive access, or a new synapse account, fill out this `Redcap survey <https://redcap.kumc.edu/surveys/?s=R7PCHA3PNL>`_
+
+Selecting a Server
+--------------------
+
+**hbic-synapse** is the primary research server, accessible over SSH, with 12 CPU & 24 GB RAM. The secondary servers, **hbic-alpha** and **hbic-beta** are also accessible over SSH and are suitable for resource-intensive interactive jobs such as MATLAB. Check the `current server loads <http://hbic-synapse.kumc.edu:3838/usage.html>`_ and consider connecting to **hbic-alpha** or **hbic-beta** if Synapse is congested.
+
+A SLURM scheduler hosted on Synapse allows you to submit batch scripts to the compute-only servers **hbic-gamma** and **hbic-delta**. Direct SSH connections to these servers is not permitted. The scheduler will wait to submit your job until CPU/RAM resources become available, and will reserve those resources for the duration of your job so that it will not get throttled or killed due to congestion.
+
 
 .. _networkdrive:
 
@@ -41,76 +52,89 @@ Use the "KUMC-Map" and "KUMC-Unmap" utilities to mount network drives to Synapse
 Applications
 ---------------------
 
-Not all applications are available on the system path by default. Use the "load" utility to add software for either one-time use or to add it to your ~/.bash_profile startup script. Run "load" with no arguments for a list of available software.
+Not all applications are available on the system path by default. Use the "loadapps" utility to add software to your startup script. 
 
 .. code-block:: console
 
-   load afni
+   loadapps
 
-   load --save afni
+Available applications (load before first use with loadapps):
 
-* `AlizaMS <https://github.com/AlizaMedicalImaging/AlizaMS>`_: Dicom Viewer 
+* ASHS
+* MRIcron
+* AFNI
+* lcmodel
+* TORTOISE
+* MATLAB
+* itk-SNAP
+* Mango
+* Fiji
+* AlizaMS
+* Freesurfer
+* ImageJ
+* SegAdapter
+* ANTs
+* Mipav
+* FSL
 
-  * hbic-synapse: alizams
+Additional applications are always available at the command line, including R, Python, Docker, Singularity, Firefox, and Okular (pdf viewer). See more with ``ls /usr/local/bin``
 
-  * hbic-synapse2: /usr/local/bin/alizams-1.4.2_linux/bin/alizams
+Python environments are managed with ``conda``. See available conda environments with ``ls /opt/anaconda3/envs`` and activate an environment with, e.g.:
 
-* `ANTs <https://github.com/ANTsX/ANTs>`_: Advanced Normalization Tools for MR images
+.. code-block:: console
 
-  * hbic-synapse: /opt/ANTS/bin/ANTS
+    conda activate py3_afni_tiny
 
-* `Freesurfer <https://surfer.nmr.mgh.harvard.edu/fswiki>`_: An open source neuroimaging toolkit for processing, analyzing, and visualizing human brain MR images
+SLURM Job Management
+----------------------
 
-  * hbic-synapse: 
-    
-    | export FREESURFER_HOME='/usr/local/freesurfer/7.4.1-1'
+SLURM allows you to submit jobs to the compute nodes **hbic-gamma** and **hbic-delta** from Synapse. Your job will be scheduled and as soon as resources become available on one of the compute nodes. While running, your job will have dedicatad CPU/RAM allocated to it, ensuring that your scripts do not get throttled or killed due to resource competition.
 
-    | export SUBJECTS_DIR=$FREESURFER_HOME/subjects
+Before running jobs with SLURM, ensure that your account has access to the R and P drives on both **hbic-gamma** and **hbic-delta** with the `checkdrives` command. (The SLURM scheduler will submit your job to the next available node, so be sure that your drives are available on both). 
 
-    | source $FREESURFER_HOME/SetUpFreeSurfer.sh
+.. code-block:: console
 
-    | freesurfer
+    checkdrives
 
-  * hbic-synapse2: 
+The following output indicates that the P-Drive is available on both servers, but the R-Drive has not been mounted on either server yet.
 
-    | export FREESURFER_HOME='/usr/local/freesurfer/7.2.0-1'
+.. code-block:: console
 
-    | export SUBJECTS_DIR=$FREESURFER_HOME/subjects
+    hbic-gamma: R-Drive not mounted
+    hbic-delta: R-Drive not mounted
+    hbic-gamma: P-Drive OK
+    hbic-delta: P-Drive OK
 
-    | source $FREESURFER_HOME/SetUpFreeSurfer.sh
+Use ``checkdrives`` with a drive letter argument (R and/or P) to mount the requested drive on both **hbic-gamma** and **hbic-delta**, providing your password when requested.
 
-    | freesurfer
+.. code-block:: console
 
-* `FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL>`_: A library of analysis tools for FMRI, MRI and diffusion brain imaging data
+    checkdrives R
 
-  * hbic-synapse:
+To submit a job, create a script file as below, supplying your information in the #SBATCH paramaters. Your job will wait to be scheduled until the requested CPUs and RAM become available. Your job will run up to the time parameter, at which point it will be terminated. Any code you want to execute goes below the #SBATCH lines. If you need a certain application, load it at the beginning of your script with e.g., ``load afni``.
 
-    | FSLDIR=/opt/fsl
+.. code-block:: bash
 
-    | . ${FSLDIR}/etc/fslconf/fsl.sh
+    #!/bin/bash
+    #SBATCH --job-name=testing_slurm         # Job name
+    #SBATCH --mail-type=BEGIN,END,FAIL       # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=ADDRESS@kumc.edu     # Where to send mail
+    #SBATCH --ntasks=1                       # Number of parallel tasks, usually 1
+    #SBATCH --cpus-per-task=4                # Number of CPU cores per task
+    #SBATCH --mem=1g                         # Total memory requested on the node
+    #SBATCH --time=1-00:00:00                # Time limit days-hrs:min:sec
+    #SBATCH --output=test_%j.log             # Standard output and error log
 
-    | PATH=${FSLDIR}/bin:${PATH}
+    echo "Slurm test successful" > ~/R-Drive/YOUR_FOLDER/slurm_test.txt
 
-    | export FSLDIR PATH
+To submit a job, run:
 
-    | fsl
+.. code-block:: console
 
-  * hbic-synapse2:
+    sbatch myscript.sh
 
-    | load fsl
+And check the status of the compute nodes and your job with:
 
-    | fsl
+.. code-block:: console
 
-* `ImageJ <https://imagej.net/ij/index.html>`_: Image processing and analysis
-
-  * hbic-synapse: /opt/ImageJ/ImageJ
-
-Utilities
----------------------
-
-* Docker & Singularity
-
-* Firefox
-
-* okular (pdf viewer)
-
+    sinfo
