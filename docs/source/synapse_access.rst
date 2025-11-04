@@ -23,7 +23,7 @@ Windows
    
    * Remote Host: hbic-synapse.kumc.edu
    
-   * Username: <your KUMC username> *Note: admins need to login with their sa-USERNAME account*
+   * Username: <your KUMC username> *Note: admins can login with their USERNAME or sa-USERNAME account*
 
    .. image:: media/mobaxterm_1.png
      :width: 800
@@ -59,6 +59,26 @@ Mac OS
    .. image:: media/xeyes.jpg
      :width: 200
      :alt: The xeyes window, showing eyes that follow the user's cursor around the screen.
+
+
+Azure Virtual Desktop
+-----------------------------
+
+#. Some graphical software on Synapse may fail to load on certain MacOS configurations. Instead, you can use Azure Virtual Desktop to access a virtual Windows environment to connect to Synapse, as well as the R- and P- Drives and certain pre-installed University software.
+#. `Request access <https://redcap.kumc.edu/surveys/?s=R7PCHA3PNL>`_ to the R-Drive "Resources" folder (R:\Hoglund\Resources) 
+#. Connect to the Azure Virtual Desktop.
+#. Open a File Explorer window and navigate to R:\Hoglund\Resources\Applications\MobaXterm_Portable_v25.3 and open MobaXterm_Personal_25.3.exe. If you receive a security warning, first verify that the indicated R-Drive path in the pop-up is correct, then Run the software. 
+#. In MobaXterm, configure a new session. Select SSH, ensure X11-Forwarding is checked, and enter the following information:
+   
+   * Remote Host: hbic-synapse.kumc.edu
+   
+   * Username: <your KUMC username> *Note: admins can login with their USERNAME or sa-USERNAME account*
+
+   .. image:: media/mobaxterm_1.png
+     :width: 800
+     :alt: A screenshot of MobaXterm. A red circle is drawn around the "Session" button on the top row of the application. A pop-up window titled "Session settings" is opened, and there is a red circle drawn around the "SSH" tab. In the section Basic SSH settings, the field Remote host is circled and contains the text "hbic-synapse.kumc.edu". A red circle is drawn around the specify username field. The filed is checked and contains an example username, a123b456. In the panel below, the "Advanced SSH settings" tab is selected. A red circle is drawn around the option X-11 forwarding, and this option is checked.
+
+#. Connect to Synapse by clicking the Sessions tab on the Left, and then selecting the hbic-synapse.kumc.edu session that you just configured. Enter your KUMC credentials when prompted.
 
 
 X2Go
