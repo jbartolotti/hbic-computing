@@ -65,9 +65,9 @@ Azure Virtual Desktop
 -----------------------------
 
 #. Some graphical software on Synapse may fail to load on certain MacOS configurations. Instead, you can use Azure Virtual Desktop to access a virtual Windows environment to connect to Synapse, as well as the R- and P- Drives and certain pre-installed University software.
-#. `Request access <https://redcap.kumc.edu/surveys/?s=R7PCHA3PNL>`_ to the R-Drive "Resources" folder (R:\Hoglund\Resources) 
+#. `Request access <https://redcap.kumc.edu/surveys/?s=R7PCHA3PNL>`_ to the R-Drive "Resources" folder (R:/Hoglund/Resources) 
 #. Connect to the Azure Virtual Desktop.
-#. Open a File Explorer window and navigate to R:\Hoglund\Resources\Applications\MobaXterm_Portable_v25.3 and open MobaXterm_Personal_25.3.exe. If you receive a security warning, first verify that the indicated R-Drive path in the pop-up is correct, then Run the software. 
+#. Open a File Explorer window and navigate to R:/Hoglund/Resources/Applications/MobaXterm_Portable_v25.3 and open MobaXterm_Personal_25.3.exe. If you receive a security warning, first verify that the indicated R-Drive path in the pop-up is correct, then Run the software. 
 #. In MobaXterm, configure a new session. Select SSH, ensure X11-Forwarding is checked, and enter the following information:
    
    * Remote Host: hbic-synapse.kumc.edu
