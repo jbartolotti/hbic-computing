@@ -52,6 +52,8 @@ Mac OS
 
      ssh -Y <username>@hbic-synapse.kumc.edu
 
+     ssh -Y asmith@hbic-synapse.kumc.edu
+
 
 
 #. The first time that you login to synapse, confirm that X-Windows forwarding is working. Enter xeyes on the terminal and press return. You should get a window with a pair of eyes open on your screen.
