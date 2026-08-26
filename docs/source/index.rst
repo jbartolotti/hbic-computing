@@ -1,6 +1,8 @@
 HBIC Computing
 ===================================
 
+New Users: :ref:`click here<new_user>` to request account access
+
 Hoglund computing resources include:
 
 * A primary research server: **hbic-synapse**
@@ -14,6 +16,7 @@ Contents
 --------
 
 .. toctree::
+   new_user
    synapse
    synapse_access
    xnat
