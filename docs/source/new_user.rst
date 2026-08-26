@@ -1,3 +1,5 @@
+.. _new_user:
+
 New User Access Requests
 ========================
 
